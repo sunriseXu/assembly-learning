@@ -1,2 +1,2 @@
-1._start: to label the entry point of a program //汇编程序需要用_start标签来标记程序的入口点
-2.
+_start: to label the entry point of a program //汇编程序需要用_start标签来标记程序的入口点
+.global: declares program labels that are accessable from external programs //标明此段汇编函数可以被外部程序调用，外部程序可见
