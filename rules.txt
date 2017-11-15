@@ -10,4 +10,6 @@ gdb: x: display the values of specific locations. modifier{/nyz:{n:the numbers o
 directive .ascii: define a ascii string. //指定段格式为字符串格式
 directive .asciz: define a ascii string, adding the null character to the end of the define string.//定义字符串，系统会自动加上空字符在末尾，用于printf等C库函数打印。
 directive .lcomm: define a buffer area. format: .lcomm buffername, size(byte) //定义一个特定大小的buffer
+instruction CPUID: extract the Vendor ID string from the processor //获取供应商ID，由eax指定参数，ebx, edx, ecx,接受返回的结果
+
 
