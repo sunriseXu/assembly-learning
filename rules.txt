@@ -7,6 +7,7 @@ gdb: break $label+offset: specify breakpoints, specify the location relative to 
 gdb: info registers: see values of all registers. //观察所有寄存器的值
 gdb: print: print values of registers, variables. modifier{/x:display in hexadecimal, /d:display in decimal, /t:display in binary} //观察寄存器，变量的值，指定参数可以让数值按指定格式显示
 gdb: x: display the values of specific locations. modifier{/nyz:{n:the numbers of fields to display, y:format{c:character,d:decimal,x:hexadecimal},z:size of fields{b:byte,h:16bit(half-word);w:32bit(a word)}}}.指定需要显示的内存，参数可以指定内存大小，显示格式，按字节/按半字/按字。
+section .data: data in this section must be given symbols and types(directive). and they will be contained in executable files.
 directive .ascii: define a ascii string. //指定段格式为字符串格式
 directive .asciz: define a ascii string, adding the null character to the end of the define string.//定义字符串，系统会自动加上空字符在末尾，用于printf等C库函数打印。
 directive .lcomm: define a buffer area. format: .lcomm buffername, size(byte) //定义一个特定大小的buffer
@@ -14,7 +15,11 @@ instruction CPUID: extract the Vendor ID string from the processor //获取供�
 label: a tag to reference the data element. //标签，相当于变量名，用来索引特定的元素, 标签后需要添加冒号
 directive: reserve a specified amount of memory. {.ascii:text string, .asciz:null-terminated string, .byte:byte value, .double:double-precision floating-point number; .float:single-precision floating-point number, .int: 32-bit integer number, .long:32-bit integer number, .short:16-bit integer number, .single:the same as .float} //定义特定大小的元素，相当于类型关键字。
 directive .equ: define static symbols, set a constant value to a symbol. //定义常量，相当于c语言中的#define， 格式：.equ 符号名，值 定义后，程序无法修改这个常量
-
+directive .fill: create one byte per field, and fill it with zeros. usage: .fill symbol name, size. //定义填充0的字节内存
+section .bss: declare raw segments of memory and they will not be included in the executable files. //定义未初始化的内存片段，不用指定数据类型，并且这段内存是运行时分配的。
+directive .comm: .bss's directive, usage: .comm label, size(bytes). //定义未初始化片段，给定片段索引和大小，单位是字节
+directive .lcomm: local common memory area. //定义内存片段，程序外的函数将无法访问
+instruction mov: moving data.
 
 
 
