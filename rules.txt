@@ -1,7 +1,7 @@
 _start: to label the entry point of a program //汇编程序需要用_start标签来标记程序的入口点，开始标号
 .global: declares program labels that are accessable from external programs //标明此段汇编函数可以被外部程序调用，外部程序可见
 .section: define a section //每个段开始前必须用.section定义段名，.section + 段号
-int: to use a Linux system call //产生系统调用，并且指定系统调用号
+int: to generate a interrupt //产生中断
 int $0x80: generate a system call, with a value of 0x80 //产生0x80软中断，并且具体的中断处理号由eax寄存器给出。其中eax=4时，表示调用write系统函数，write参数由ebx（文件描述符，1表示标准输出stdout）, ecx（开始地址）, edx（字符个数）提前给出。其中eax=1时，表示调用exit函数，exit参数由ebx（0表示正常退出）提前给出。
 gdb: break $label+offset: specify breakpoints, specify the location relative to the nearest label. //设置断点，程序标号+标号偏移行
 gdb: info registers: see values of all registers. //观察所有寄存器的值
@@ -11,5 +11,11 @@ directive .ascii: define a ascii string. //指定段格式为字符串格式
 directive .asciz: define a ascii string, adding the null character to the end of the define string.//定义字符串，系统会自动加上空字符在末尾，用于printf等C库函数打印。
 directive .lcomm: define a buffer area. format: .lcomm buffername, size(byte) //定义一个特定大小的buffer
 instruction CPUID: extract the Vendor ID string from the processor //获取供应商ID，由eax指定参数，ebx, edx, ecx,接受返回的结果
+label: a tag to reference the data element. //标签，相当于变量名，用来索引特定的元素, 标签后需要添加冒号
+directive: reserve a specified amount of memory. {.ascii:text string, .asciz:null-terminated string, .byte:byte value, .double:double-precision floating-point number; .float:single-precision floating-point number, .int: 32-bit integer number, .long:32-bit integer number, .short:16-bit integer number, .single:the same as .float} //定义特定大小的元素，相当于类型关键字。
+directive .equ: define static symbols, set a constant value to a symbol. //定义常量，相当于c语言中的#define， 格式：.equ 符号名，值 定义后，程序无法修改这个常量
+
+
+
 
 
