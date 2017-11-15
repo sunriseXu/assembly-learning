@@ -22,6 +22,10 @@ directive .lcomm: local common memory area. //定义内存片段，程序外的�
 instruction mov: moving data. usage: movx source, destination. {x:data size{l:32-bit,w:16-bit,b:8-bit}}. //mov用来移动数据，在源和目的中必然有一个是寄存器。另外一个可以是 {立即数，寄存器，内存地址，标号}。但例外情况有两种：1.可以从立即数到内存地址 2.movs指令可以从内存地址到内存地址。 通用寄存器可以相互mov， 特殊寄存器不能相互mov，只能与通用寄存器mov。
 general-purpose registers:eax, ebx, ecx, edx  edi, esi, ebp, esp.
 label: 当需要获取地址的值时，需要在前面加上$符号，同立即数。当需要直接索引地址时，不需要加美元符号，直接用作基地址。就是：加上美元符号表示操作地址，不加表示操作存在那个地址上的值。
+label: 当用label标签来存取数组元素时，label用作基地址，而某寄存器作为数组下标，某常量代表数组元素的大小。还有一个参数是基于基地址的偏移量：label(offset, $reg, size)
+register: register with prerenthese means put or get the values in the memory address contained in the register. //寄存器加上括号表示操作存在地址上的值（同不加美元符的标签）。并且在加了括号的寄存器外面指定基于寄存器指向内存地址的字节偏移量。
+
+
 
 
 
