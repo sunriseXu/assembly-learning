@@ -1,3 +1,7 @@
 _start: to label the entry point of a program //汇编程序需要用_start标签来标记程序的入口点
 .global: declares program labels that are accessable from external programs //标明此段汇编函数可以被外部程序调用，外部程序可见
 .section: define a section //每个段开始前必须用.section定义段名
+int: to use a Linux system call //产生系统调用，并且指定系统调用号
+int $0x80: generate a system call, with a value of 0x80 //产生0x80软中断，并且具体的中断处理号由eax寄存器给出。其中eax=4时，表示调用write系统函数，write参数由ebx（文件描述符，1表示标准输出stdout）, ecx（开始地址）, edx（字符个数）提前给出。其中eax=1时，表示调用exit函数，exit参数由ebx（0表示正常退出）提前给出。
+
+
