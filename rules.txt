@@ -19,8 +19,9 @@ directive .fill: create one byte per field, and fill it with zeros. usage: .fill
 section .bss: declare raw segments of memory and they will not be included in the executable files. //定义未初始化的内存片段，不用指定数据类型，并且这段内存是运行时分配的。
 directive .comm: .bss's directive, usage: .comm label, size(bytes). //定义未初始化片段，给定片段索引和大小，单位是字节
 directive .lcomm: local common memory area. //定义内存片段，程序外的函数将无法访问
-instruction mov: moving data.
-
+instruction mov: moving data. usage: movx source, destination. {x:data size{l:32-bit,w:16-bit,b:8-bit}}. //mov用来移动数据，在源和目的中必然有一个是寄存器。另外一个可以是 {立即数，寄存器，内存地址，标号}。但例外情况有两种：1.可以从立即数到内存地址 2.movs指令可以从内存地址到内存地址。 通用寄存器可以相互mov， 特殊寄存器不能相互mov，只能与通用寄存器mov。
+general-purpose registers:eax, ebx, ecx, edx  edi, esi, ebp, esp.
+label: 当需要获取地址的值时，需要在前面加上$符号，同立即数。当需要直接索引地址时，不需要加美元符号，直接用作基地址。就是：加上美元符号表示操作地址，不加表示操作存在那个地址上的值。
 
 
 
