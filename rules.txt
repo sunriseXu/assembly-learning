@@ -30,6 +30,9 @@ instruction bswap: reverse the order of the bytes in register. big-endian value 
 instruction xadd: exchange the values between two registers, or a memory location and a register, add the value and store them in the destination location. usage: xadd source, destinatioin. the source must be a register. //
 instruction cmpxchg: usage: cmpxchg source, destination. compare the destination operand with the value in eax, ax, or al, if equal, move the value in source to destination, if not, move the destination value will be loaded into eax, ax, or al
 instruction cmpxchg8b: usage: cmpxchg8b destination
+instruction pushx: push data into stack. {x:size{l:32-bit, w:16bit，b:8-bit}} //压栈，压栈的数据可以是寄存器和内存值或内存地址。（16位/32位） 或者立即数（8位，16位， 32位）.
+instruction popx: pop value in stack to destination. //出栈，目标可以是寄存器或者内存中。普通寄存器可以是16位和32位，段寄存器只能是16位。内存可以是16位或者32位
+
 
 
 
