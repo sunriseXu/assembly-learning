@@ -24,6 +24,14 @@ general-purpose registers:eax, ebx, ecx, edx  edi, esi, ebp, esp.
 label: 当需要获取地址的值时，需要在前面加上$符号，同立即数。当需要直接索引地址时，不需要加美元符号，直接用作基地址。就是：加上美元符号表示操作地址，不加表示操作存在那个地址上的值。
 label: 当用label标签来存取数组元素时，label用作基地址，而某寄存器作为数组下标，某常量代表数组元素的大小。还有一个参数是基于基地址的偏移量：label(offset, $reg, size)
 register: register with prerenthese means put or get the values in the memory address contained in the register. //寄存器加上括号表示操作存在地址上的值（同不加美元符的标签）。并且在加了括号的寄存器外面指定基于寄存器指向内存地址的字节偏移量。
+instruction cmov: condition move data according the values in flag register
+instruction xchg: exchange values in two location without a temporary register. 交换两个寄存器 或者 一个寄存器和一个内存的值
+instruction bswap: reverse the order of the bytes in register. big-endian value to little-endian value, visa versa.//改变寄存器中的字节序，大端字节序与小端字节序转换
+instruction xadd: exchange the values between two registers, or a memory location and a register, add the value and store them in the destination location. usage: xadd source, destinatioin. the source must be a register. //
+instruction cmpxchg: usage: cmpxchg source, destination. compare the destination operand with the value in eax, ax, or al, if equal, move the value in source to destination, if not, move the destination value will be loaded into eax, ax, or al
+instruction cmpxchg8b: usage: cmpxchg8b destination
+
+
 
 
 
